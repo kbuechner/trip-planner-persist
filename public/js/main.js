@@ -1,5 +1,7 @@
 $(function initializeMap (){
 
+
+// begin map bs
   var graceHopperAcademy = new google.maps.LatLng(40.705086, -74.009151);
 
   var styleArr = [{
@@ -56,6 +58,8 @@ $(function initializeMap (){
     marker.setMap(currentMap);
     return marker
   }
+
+// end map bs
 
   function makeOptions(attractionType) {
     var select = $(`#${attractionType}-choices`)

@@ -42,7 +42,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.post('/:number/hotels', function(req, res, next) {
-  console.log(req.params.id)
+  console.log(req.params.number)
   Day.update({...})
   .then(day){
     day.save()
@@ -54,7 +54,7 @@ router.post('/:number/hotels', function(req, res, next) {
 })
 
 router.post('/:number/restaurants', function(req, res, next) {
-  console.log(req.params.id)
+  console.log(req.params.number)
   Day.update({...})
   .then(day){
     day.save()
@@ -66,8 +66,9 @@ router.post('/:number/restaurants', function(req, res, next) {
 }) 
 
 router.post('/:number/activities', function(req, res, next) {
-  console.log(req.params.id)
-  Day.update({...})
+  console.log(req.params.number)
+  Day.update({...
+  })
   .then(day){
     day.save()
   }
@@ -92,6 +93,7 @@ router.delete('/:number', function(req, res, next) {
     })
     .catch(next);
 });
+
 
 
 module.exports=router;
