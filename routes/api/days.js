@@ -19,35 +19,43 @@ router.get('/', function (req, res, next) {
 //POST /api/days/:id/restaurants
 
 router.get('/:id', function(req, res, next) {
-  Day.findById(req.params.id)
-  .then(function(day){
-    res.json(day)
-  })
-  .catch(next);    
+  Day.findAll({
+      where: {
+        number: req.params.id
+      }
+    })
+    .then(function(day) {
+      res.json(day)
+    })
+    .catch(next);
 });
+
 
 router.post('/', function(req, res, next) {
   console.log(req.body)
-  res.json(req.body)
-  Day.create(
-    req.body
-   )
+  Day.create(req.body)
+  .then(function(day) {
+      res.json(day)
+      console.log(day)
+  })
+    .catch(next);
+});
+
+
+router.delete('/:number', function(req, res, next) {
+  console.log(req.params.number)
+  Day.findOne({
+    where:{ 
+      number: req.params.number}
+    })
   .then(function(day){
-    console.log(day)
-  })
-  .catch(next);
+      return day.destroy()
+    })
+    .then(function() {
+      res.send("BALETED");
+    })
+    .catch(next);
 });
 
-// router.put('/', function(req, res, next) {
 
-// });
-
-router.delete('/:id', function(req, res, next) {
-  Promise.all([    
-  Day.destroy({where: {id: req.body.id} })
-    ])
-  .spread(function(){
-  })
-  .catch(next);
-});
 module.exports=router;
