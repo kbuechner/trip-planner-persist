@@ -11,8 +11,8 @@ router.get('/', function (req, res, next) {
   Promise.all([
     Activity.findAll({include: Place}),
   ])
-  .spread(function (activity) {
-    res.json(activity);
+  .spread(function (activities) {
+    res.json(activities);
   })
   .catch(next);
 });
