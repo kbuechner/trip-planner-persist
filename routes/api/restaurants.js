@@ -1,27 +1,22 @@
 var router = require('express').Router();
 var Promise = require('bluebird');
 var models = require('../../models')
-
+var Hotel = models.Hotel;
 var Restaurant = models.Restaurant;
-
+var Activity = models.Activity;
 var Place = models.Place;
 
 
-
-router.get('/restaurants', function(req, res, next) {
-	Promise.all([
-			Restaurant.findAll({
-				include: Place
-			}),
-		])
-		.spread(function(restaurant) {
-			res.render('index', {
-				restaurant: restaurant,
-			});
-		})
-		.catch(next);
+router.get('/', function (req, res, next) {
+  Promise.all([
+    Restaurant.findAll({include: Place}),
+  ])
+  .spread(function (restaurant) {
+    res.json(restaurant);
+  })
+  .catch(next);
 });
 
 
 
-module.exports = router;
+module.exports=router;
