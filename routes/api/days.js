@@ -41,6 +41,42 @@ router.post('/', function(req, res, next) {
     .catch(next);
 });
 
+router.post('/:number/hotels', function(req, res, next) {
+  console.log(req.params.id)
+  Day.update({...})
+  .then(day){
+    day.save()
+  }
+  .then(day){
+    res.json(day)
+  }
+  .catch(next)
+})
+
+router.post('/:number/restaurants', function(req, res, next) {
+  console.log(req.params.id)
+  Day.update({...})
+  .then(day){
+    day.save()
+  }
+  .then(day){
+    res.json(day)
+  }
+  .catch(next)
+}) 
+
+router.post('/:number/activities', function(req, res, next) {
+  console.log(req.params.id)
+  Day.update({...})
+  .then(day){
+    day.save()
+  }
+  .then(day){
+    res.json(day)
+  }
+  .catch(next)
+}) 
+
 
 router.delete('/:number', function(req, res, next) {
   console.log(req.params.number)
